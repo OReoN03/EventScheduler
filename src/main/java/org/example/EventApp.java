@@ -47,8 +47,8 @@ public class EventApp {
                 if (actionType != null) {
                     return actionType;
                 } else {
-                    System.out.println("Некорректный ввод. Номер действия должен быть не меньше 1" +
-                            " и не больше общего количества доступных действий");
+                    System.out.println("Некорректный ввод. " +
+                            "Номер действия не должен выходить за рамки допустимых значений.");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Некорректный ввод. Попробуйте снова.");
@@ -100,7 +100,6 @@ public class EventApp {
     }
 
     private void viewEvents() {
-        System.out.print("Список событий: ");
         List<Event> events = eventScheduler.getEvents();
         formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         printEvents(events);
@@ -124,6 +123,7 @@ public class EventApp {
     }
 
     private void printEvents(List<Event> events) {
+        System.out.print("Список событий: ");
         if (events.isEmpty()) System.out.println("(пусто)");
         else {
             System.out.println();
@@ -156,8 +156,8 @@ public class EventApp {
                 }
 
                 if (index < 1 || index - 1 >= eventScheduler.getEvents().size()) {
-                    System.out.println("Некорректный ввод. Номер события должен быть не меньше 1" +
-                            " и не больше общего количества событий");
+                    System.out.println("Некорректный ввод. " +
+                            "Номер события не должен выходить за рамки допустимых значений.");
                     continue;
                 }
 
@@ -169,6 +169,7 @@ public class EventApp {
     }
 
     private void exit() {
+        System.out.println("До свидания!");
         exit = true;
     }
 }
